@@ -6,5 +6,6 @@ public class FacadePatternOrder {
 
 	      orderMaker.OrderDragonBall();      
 	      orderMaker.OrderFigurine();
+	      System.out.println("test github");
 	}
 }
