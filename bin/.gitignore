@@ -5,3 +5,8 @@
 /OrderMaker.class
 /Product.class
 /Stock.class
+/ViewDetails.class
+/ViewDetails$1.class
+/SortedListModel.class
+/ViewDetails$AddListener.class
+/ViewDetails$RemoveListener.class
