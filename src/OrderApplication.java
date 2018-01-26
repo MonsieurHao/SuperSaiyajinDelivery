@@ -26,7 +26,7 @@ public class OrderApplication implements ActionListener{
 	String ret;
 	DefaultListModel listModel;
 	
-	
+	Facade facade = new Facade();
 	
 	
 	OrderApplication(){
@@ -94,7 +94,7 @@ public class OrderApplication implements ActionListener{
 		if("BuyAction".equals(e.getActionCommand()))
 		{
 		
-				Facade.order(ret);
+				facade.order(ret);
 	    
 		}
 		

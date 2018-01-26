@@ -1,7 +1,9 @@
 
 public class Facade {
 	
-		public static void order(String ret){
+		Order order = new Order();
+	
+		public void order(String ret){
 			
 			//if(argent et dispo)
 			
@@ -11,7 +13,7 @@ public class Facade {
 			
 			//decrement the number of items in the stock corresponding to the selected item
 			
-			Order.UpdateStock(ret);
+			order.UpdateStock(ret);
 			
 			//sinon ne rien faire
 		}
