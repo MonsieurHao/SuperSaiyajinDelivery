@@ -10,3 +10,10 @@
 /SortedListModel.class
 /ViewDetails$AddListener.class
 /ViewDetails$RemoveListener.class
+/Order.class
+/Billing.class
+/Shipment.class
+/Facade.class
+/OrderApplication.class
+/Wallet.class
+/Stock$Double.class
