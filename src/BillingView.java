@@ -1,17 +1,29 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JList;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JScrollPane;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
-public class BillingView extends JFrame {
+public class BillingView extends JFrame implements ActionListener {
+	
+	JList<String> l1;
+	static String ret;
+	DefaultListModel<String> listModel;
+	
+	Facade facade = new Facade();
 
 	private JPanel contentPane;
 
@@ -22,7 +34,7 @@ public class BillingView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BillingView frame = new BillingView();
+					BillingView frame = new BillingView(ret);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +46,17 @@ public class BillingView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public BillingView() {
+	public BillingView(String ret) {
+		this.ret = ret;
+		
+		listModel = new DefaultListModel<String>();
+		
+		listModel.addElement(ret);
+		
+		
+		//creating J List
+				l1 = new JList<String>(listModel);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1201, 655);
 		contentPane = new JPanel();
@@ -49,12 +71,12 @@ public class BillingView extends JFrame {
 		lblSuperSaiyajinDelivery.setBounds(12, 13, 443, 62);
 		contentPane.add(lblSuperSaiyajinDelivery);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		JScrollPane scrollPane = new JScrollPane(l1);
 		scrollPane.setViewportBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		scrollPane.setBounds(254, 375, 719, 220);
 		contentPane.add(scrollPane);
 		
-		JLabel lblItemName = new JLabel("Item Name");
+		JLabel lblItemName = new JLabel(listModel.firstElement());
 		lblItemName.setBounds(302, 153, 338, 72);
 		contentPane.add(lblItemName);
 		
@@ -63,9 +85,41 @@ public class BillingView extends JFrame {
 		contentPane.add(lblItemImage);
 		
 		JButton btnConfirmPayment = new JButton("Confirm payment");
+		btnConfirmPayment.addActionListener(this);
+		btnConfirmPayment.setActionCommand("Confirm payment");
 		btnConfirmPayment.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnConfirmPayment.setBounds(471, 257, 169, 76);
 		contentPane.add(btnConfirmPayment);
 	}
+	
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+
+		
+		if("Confirm payment".equals(e.getActionCommand()))
+		{
+		
+				facade.order(ret);
+				
+			
+		}
+		
+	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

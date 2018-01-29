@@ -3,6 +3,7 @@ import java.awt.Image;
 import javax.swing.JFrame;
 import java.awt.Color;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -14,10 +15,18 @@ import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.border.BevelBorder;
 
-public class HomeWindow {
+public class HomeWindow implements ActionListener{
 
 	private JFrame frame;
 	private JLabel logo_lbl;
+	
+	JList<String> l1;
+	JButton BuyButton, GetMoney;
+	String ret;
+	DefaultListModel<String> listModel;
+	
+	// Implementing the Facade
+	Facade facade = new Facade();
 
 	/**
 	 * Launch the application.
@@ -51,18 +60,36 @@ public class HomeWindow {
 		frame.getContentPane().setBackground(new Color(255, 140, 0));
 		frame.getContentPane().setLayout(null);
 		
+		listModel = new DefaultListModel<String>();
+
+		
+		for (String value : Stock.stock_hashmap.keySet())
+		{
+		    listModel.addElement(value);
+		}
+		
+		
+		//creating J List
+		l1 = new JList<String>(listModel);
+		
+
+		
 		JButton btnBuy = new JButton("Buy");
 		btnBuy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
+					//get selected item
+					ret = (String) l1.getSelectedValue();
 					frame.dispose();
-					BillingView cart = new BillingView();
+					BillingView cart = new BillingView(ret);
 					cart.setVisible(true);
 				}catch(Exception e){
 					
 				}
 			}
 		});
+		btnBuy.setActionCommand("Buy");
+		
 		btnBuy.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnBuy.setBackground(new Color(211, 211, 211));
 		btnBuy.setBounds(875, 228, 128, 54);
@@ -73,10 +100,12 @@ public class HomeWindow {
 		lblSuperSaiyajinDelivery.setBounds(67, 13, 487, 72);
 		frame.getContentPane().add(lblSuperSaiyajinDelivery);
 		
-		JScrollPane itemsPane = new JScrollPane();
+		JScrollPane itemsPane = new JScrollPane(l1);
 		itemsPane.setViewportBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		itemsPane.setBounds(67, 327, 970, 268);
 		frame.getContentPane().add(itemsPane);
+		
+		
 		
 		JScrollPane topItemsPane = new JScrollPane();
 		topItemsPane.setToolTipText("");
@@ -97,5 +126,11 @@ public class HomeWindow {
 		*/
 		frame.setBounds(100, 100, 1201, 655);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		
 	}
 }
