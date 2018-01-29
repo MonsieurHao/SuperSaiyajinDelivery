@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.border.MatteBorder;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.border.BevelBorder;
@@ -80,7 +81,6 @@ public class HomeWindow implements ActionListener{
 				try{
 					//get selected item
 					ret = (String) l1.getSelectedValue();
-					//frame.dispose();
 					BillingView cart = new BillingView(ret);
 					cart.setVisible(true);
 				}catch(Exception e){
@@ -126,11 +126,15 @@ public class HomeWindow implements ActionListener{
 		*/
 		frame.setBounds(100, 100, 1201, 655);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 
+		
+		System.out.println(ret);
 		
 	}
 }

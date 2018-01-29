@@ -17,6 +17,8 @@ public class Order {
 		if(VerifStock(name)==true){
 		Stock.stock_hashmap.replace(name, Stock.stock_hashmap.get(name), Stock.stock_hashmap.get(name) - 1);
 		System.out.println(Stock.stock_hashmap.get(name));
+		JOptionPane.showMessageDialog(null, "You bought the product. "
+				+ "Check your mailbox for the billing receipt.");
 		}else{
 			JOptionPane.showMessageDialog(null, "This product is unavailable,sorry !");
 		}

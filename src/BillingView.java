@@ -58,7 +58,7 @@ public class BillingView extends JFrame implements ActionListener {
 				l1 = new JList<String>(listModel);
 		
 		
-		setBounds(100, 100, 1201, 655);
+		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 140, 0));
 		this.setTitle("Super Saiyajin Delivery");
@@ -71,10 +71,10 @@ public class BillingView extends JFrame implements ActionListener {
 		lblSuperSaiyajinDelivery.setBounds(12, 13, 443, 62);
 		contentPane.add(lblSuperSaiyajinDelivery);
 		
-		JScrollPane scrollPane = new JScrollPane(l1);
+		/*JScrollPane scrollPane = new JScrollPane(l1);
 		scrollPane.setViewportBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		scrollPane.setBounds(254, 375, 719, 220);
-		contentPane.add(scrollPane);
+		contentPane.add(scrollPane);*/
 		
 		JLabel lblItemName = new JLabel(listModel.firstElement());
 		lblItemName.setBounds(302, 153, 338, 72);
