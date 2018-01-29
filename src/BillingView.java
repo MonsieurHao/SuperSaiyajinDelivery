@@ -57,7 +57,7 @@ public class BillingView extends JFrame implements ActionListener {
 		//creating J List
 				l1 = new JList<String>(listModel);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		setBounds(100, 100, 1201, 655);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 140, 0));

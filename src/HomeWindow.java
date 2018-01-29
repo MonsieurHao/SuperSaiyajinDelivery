@@ -80,7 +80,7 @@ public class HomeWindow implements ActionListener{
 				try{
 					//get selected item
 					ret = (String) l1.getSelectedValue();
-					frame.dispose();
+					//frame.dispose();
 					BillingView cart = new BillingView(ret);
 					cart.setVisible(true);
 				}catch(Exception e){
