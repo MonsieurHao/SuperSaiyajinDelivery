@@ -20,7 +20,8 @@ import javax.swing.JButton;
 public class BillingView extends JFrame implements ActionListener {
 	
 	JList<String> l1;
-	static String ret;
+	String ret;
+
 	DefaultListModel<String> listModel;
 	
 	Facade facade = new Facade();
@@ -30,7 +31,7 @@ public class BillingView extends JFrame implements ActionListener {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -47,7 +48,7 @@ public class BillingView extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public BillingView(String ret) {
-		this.ret = ret;
+
 		
 		listModel = new DefaultListModel<String>();
 		
@@ -80,16 +81,34 @@ public class BillingView extends JFrame implements ActionListener {
 		lblItemName.setBounds(302, 153, 338, 72);
 		contentPane.add(lblItemName);
 		
-		JLabel lblItemImage = new JLabel("Item Image");
+		
+		JLabel lblItemImage = new JLabel("Remaining products : "+ facade.stock_remain(ret));
 		lblItemImage.setBounds(29, 153, 180, 180);
 		contentPane.add(lblItemImage);
 		
+
+		
 		JButton btnConfirmPayment = new JButton("Confirm payment");
-		btnConfirmPayment.addActionListener(this);
+		btnConfirmPayment.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try{
+					facade.order(ret);
+					lblItemImage.setText("Remaining products : "+ facade.stock_remain(ret));
+					contentPane.repaint();
+					contentPane.revalidate();
+
+				}catch(Exception e){
+					
+				}
+			}
+		});
 		btnConfirmPayment.setActionCommand("Confirm payment");
 		btnConfirmPayment.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnConfirmPayment.setBounds(471, 257, 169, 76);
 		contentPane.add(btnConfirmPayment);
+		contentPane.revalidate();
+		contentPane.repaint();
+		
 	}
 	
 
@@ -99,13 +118,27 @@ public class BillingView extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 
 		
-		if("Confirm payment".equals(e.getActionCommand()))
+		/*if("Confirm payment".equals(e.getActionCommand()))
 		{
 		
 				facade.order(ret);
-				
+
+					
+					contentPane.remove(lblItemImage);
+					contentPane.updateUI();
+					contentPane.revalidate();
+					contentPane.repaint();
 			
-		}
+					
+					JLabel lblItemImage = new JLabel(String.valueOf(facade.stock_remain(ret)));
+					lblItemImage.setBounds(29, 153, 180, 180);
+					contentPane.remove(lblItemImage);
+					contentPane.revalidate();
+					lblItemImage.repaint();
+					contentPane.add(lblItemImage);
+
+			
+		}*/
 		
 	}
 	

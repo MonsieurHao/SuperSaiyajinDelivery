@@ -2,7 +2,7 @@ import javax.swing.JOptionPane;
 
 public class Order {
 	
-	//Classh which manipulates the stock
+	//Class which manipulates the stock
 	
 	public boolean VerifStock(String name){
 		Object value = Stock.stock_hashmap.get(name);
@@ -23,6 +23,13 @@ public class Order {
 			JOptionPane.showMessageDialog(null, "This product is unavailable,sorry !");
 		}
 		
+	}
+	
+	
+	public int stock_value(String name){
+		Object value = Stock.stock_hashmap.get(name);
+		
+		return (int)value;
 	}
 	
 

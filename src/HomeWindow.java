@@ -26,8 +26,7 @@ public class HomeWindow implements ActionListener{
 	String ret;
 	DefaultListModel<String> listModel;
 	
-	// Implementing the Facade
-	Facade facade = new Facade();
+
 
 	/**
 	 * Launch the application.
@@ -107,7 +106,7 @@ public class HomeWindow implements ActionListener{
 		
 		
 		
-		JScrollPane topItemsPane = new JScrollPane();
+		/*JScrollPane topItemsPane = new JScrollPane();
 		topItemsPane.setToolTipText("");
 		topItemsPane.setViewportBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		topItemsPane.setBounds(126, 135, 699, 147);
@@ -118,12 +117,13 @@ public class HomeWindow implements ActionListener{
 		lblTopItems.setBounds(77, 98, 144, 26);
 		frame.getContentPane().add(lblTopItems);
 		
-		/*
+		
 		logo_lbl = new JLabel();
 		Image logo = new ImageIcon(this.getClass().getResource("/SSD_logo")).getImage();
 		logo_lbl.setBounds(1021, 13, 150, 150);
 		frame.getContentPane().add(logo_lbl);
 		*/
+		
 		frame.setBounds(100, 100, 1201, 655);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -132,9 +132,6 @@ public class HomeWindow implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
-		
-		System.out.println(ret);
 		
 	}
 }
